@@ -7,14 +7,24 @@
       rel="stylesheet"
     />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <div class="container bg-light justify-content-center">
+
+    <div id="div1">
+    <div id="div2">
+    
+      <!-- add background bg-light -->
+    <div class="container justify-content-center">
       <div class="row">
         <div class="col col-md-6 offset-md-3">
           <br />
+          <br>
+          <br>
+          <br>
 
-          <h1 class="text-center">Get Your Local Forecast</h1>
+          <h1 id="h1test" class="text-center">Get Your Local Forecast</h1>
 
           <form
             th:action="@{/}"
@@ -48,20 +58,22 @@
 
           <hr />
 
+          <br>
           <div th:if="${data != null && data.name != 'error'}">
-            <h3>Forecast for <span th:text="${data.name}"></span></h3>
-            <p>
+            <h3 id="centeredtext">Forecast for <span th:text="${data.name}"></span></h3>
+            <br>
+            <p id="centeredtext">
               <b>Temperature:</b>
               <span th:text="${data.main.get('temp')}"></span> °F
             </p>
-            <p>
+            <p id="centeredtext">
               <b>Cloud Cover:</b>
               <span th:text="${data.clouds.get('all')}"></span> %
             </p>
-            <p>
+            <p id="centeredtext">
               <b>Wind:</b> <span th:text="${data.wind.get('speed')}"></span> mph
             </p>
-            <p>
+            <p class="white" id="centeredtext">
               <b>Conditions:</b>
               <span th:text="${data.weather[0].get('description')}"></span>
 
@@ -74,20 +86,20 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Recent Searches</th>
+                        <th class="recentsearches" id="centeredtext">Recent Searches:</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- error below -->
-                    <tr th:each="zipCode: ${zip_codes}" th:if="${zipCodeStat.index >= zipCodeStat.size - 10}">
+                   
+                    <tr class="recentsearches" id="centeredtext" th:each="zipCode: ${zip_codes}" th:if="${zipCodeStat.index >= zipCodeStat.size - 10}">
                         <td th:text="${zipCode.zip}"></td>
 
                     </tr>
                 </tbody>
             </table>
-
+        </div>
           </div>
-
+        </div>
         </div>
       </div>
     </div>
